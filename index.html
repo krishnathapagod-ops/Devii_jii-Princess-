@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Princess Day Devii Jii 👑</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg,#ffd6e7,#e8d5ff,#fff0f5);
+    color: #8d3767;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.page {
+    min-height: 100vh;
+    padding: 35px 18px 110px;
+    display: none;
+    animation: appear 1s ease;
+}
+
+.page.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes appear {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+.crown {
+    font-size: 65px;
+    animation: crown 2s infinite ease-in-out;
+}
+
+@keyframes crown {
+    50% {transform:translateY(-12px) rotate(5deg);}
+}
+
+h1 {
+    font-size: clamp(32px,8vw,48px);
+    margin: 15px 0;
+    color: #c04482;
+}
+
+h2 {
+    margin: 15px;
+    color: #b34d89;
+}
+
+p {
+    max-width: 500px;
+    line-height: 1.8;
+    font-size: 17px;
+    margin: 12px auto;
+}
+
+.card {
+    width: min(92%,500px);
+    padding: 30px 22px;
+    border: 2px solid #ffffff;
+    border-radius: 28px;
+    background: rgba(255,255,255,.55);
+    box-shadow: 0 10px 35px #d58bbd55;
+    backdrop-filter: blur(10px);
+}
+
+button {
+    border: none;
+    padding: 13px 23px;
+    margin: 8px;
+    border-radius: 30px;
+    background: #d95c9d;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    background: #b83d7e;
+}
+
+.secondary {
+    background: #a783d8;
+}
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    pointer-events: none;
+    animation: float 6s linear forwards;
+    z-index: -1;
+}
+
+@keyframes float {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 5px;
+    background: #ffffffbb;
+    backdrop-filter: blur(12px);
+    border-top: 1px solid white;
+    z-index: 5;
+}
+
+.bottom button {
+    padding: 10px 13px;
+    font-size: 13px;
+    margin: 4px;
+}
+
+.message {
+    min-height: 35px;
+    font-weight: bold;
+    color: #b83d7e;
+    margin-top: 15px;
+}
+
+.stars {
+    font-size: 25px;
+    letter-spacing: 8px;
+    margin: 15px;
+}
+
+.big-heart {
+    font-size: 65px;
+    animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+    50% {transform:scale(1.3);}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<!-- PAGE 1 -->
+
+<section class="page active" id="page1">
+
+    <div class="crown">👑</div>
+
+    <div class="card">
+        <div class="stars">✨ 🌸 ✨</div>
+
+        <h1>Happy Princess Day!</h1>
+
+        <h2>For my Devii jii 💗</h2>
+
+        <p>
+            Today is all about celebrating someone
+            who deserves the whole kingdom.
+        </p>
+
+        <p>
+            So here's a little something for the
+            princess who makes ordinary days
+            feel a little more magical. 🦋
+        </p>
+
+        <div class="big-heart">💖</div>
+
+        <p><i>Because every princess deserves her fairytale...</i></p>
+
+        <button onclick="nextPage()">
+            Open Your Surprise 🎁
+        </button>
+    </div>
+</section>
+
+
+<!-- PAGE 2 -->
+
+<section class="page" id="page2">
+
+    <div class="crown">🏰</div>
+
+    <div class="card">
+
+        <div class="stars">🌷 💗 🌷</div>
+
+        <h1>Dear Devii jii</h1>
+
+        <h2>Your Highness 👸</h2>
+
+        <p>
+            I hope your smile never fades,
+            your dreams always come true,
+            and happiness follows you everywhere.
+        </p>
+
+        <p>
+            You deserve flowers without a reason,
+            compliments without asking,
+            endless happiness and a little
+            bit of magic every day. 🌸
+        </p>
+
+        <p>
+            Never forget how special you are.
+            Keep shining, keep smiling and
+            always stay the beautiful princess
+            you are. 💕
+        </p>
+
+        <h2>Happy Princess Day, Devii jii! 👑</h2>
+
+        <p><b>With lots of love ❤️</b></p>
+
+        <button onclick="celebrate()">One More Surprise ✨</button>
+        <button class="secondary" onclick="prevPage()">Go Back ↩</button>
+
+    </div>
+</section>
+
+
+<!-- BOTTOM INTERACTIVE OPTIONS -->
+
+<div class="bottom">
+
+    <button onclick="showMessage('A tight virtual hug for you! 🫂💗')">
+        🫂 Hug
+    </button>
+
+    <button onclick="showMessage('Sending you a thousand kisses! 😘')">
+        😘 Kiss
+    </button>
+
+    <button onclick="showMessage('You deserve all the happiness in the world! 🌸')">
+        🌷 Love
+    </button>
+
+    <button onclick="celebrate()">
+        🎉 Magic
+    </button>
+
+    <div class="message" id="message">
+        Made with love for Devii jii 💗
+    </div>
+</div>
+
+
+<script>
+
+// PAGE NAVIGATION
+
+function nextPage() {
+    document.getElementById("page1").classList.remove("active");
+    document.getElementById("page2").classList.add("active");
+    celebrate();
+}
+
+function prevPage() {
+    document.getElementById("page2").classList.remove("active");
+    document.getElementById("page1").classList.add("active");
+}
+
+// BOTTOM MESSAGES
+
+function showMessage(text) {
+    document.getElementById("message").innerHTML = text;
+    hearts(12);
+}
+
+// FLOATING HEARTS
+
+function hearts(amount = 8) {
+    for(let i=0; i<amount; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = ["💗","💖","💕","💘","🌸"][Math.floor(Math.random()*5)];
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.fontSize = (18+Math.random()*25)+"px";
+        heart.style.animationDuration = (4+Math.random()*4)+"s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>heart.remove(),8000);
+    }
+}
+
+setInterval(()=>hearts(2),800);
+
+
+// CONFETTI ANIMATION
+
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+let pieces = [];
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize",resize);
+resize();
+
+function celebrate() {
+    for(let i=0;i<160;i++) {
+        pieces.push({
+            x:Math.random()*canvas.width,
+            y:-20-Math.random()*canvas.height*.5,
+            size:Math.random()*8+3,
+            speed:Math.random()*4+2,
+            color:["#ff4f9a","#ffd700","#b388ff","#ff9bbd","#ffffff"][Math.floor(Math.random()*5)],
+            rotation:Math.random()*360
+        });
+    }
+
+    document.getElementById("message").innerHTML =
+    "Yayyy! The princess deserves all the magic! 👑💗";
+}
+
+function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    pieces.forEach((p,index)=>{
+        ctx.save();
+        ctx.translate(p.x,p.y);
+        ctx.rotate(p.rotation*Math.PI/180);
+        ctx.fillStyle=p.color;
+        ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size);
+        ctx.restore();
+
+        p.y+=p.speed;
+        p.x+=Math.sin(p.y/30);
+        p.rotation+=3;
+
+        if(p.y>canvas.height) pieces.splice(index,1);
+    });
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+
+// OPENING CELEBRATION
+
+window.addEventListener("load",()=>{
+    setTimeout(celebrate,500);
+});
+
+</script>
+
+</body>
+</html>
